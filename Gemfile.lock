@@ -1,0 +1,40 @@
+GIT
+  remote: git://github.com/stesie/huginn_agent.git
+  revision: a1453daf765178a83de75119ce3115397bb620e4
+  branch: coverage-support
+  specs:
+    huginn_agent (0.4.3)
+      thor
+
+PATH
+  remote: .
+  specs:
+    huginn_todoist_agent (0.5.0)
+      huginn_agent (~> 0)
+      ruby-todoist-api (~> 0.3)
+      todoist_querynaut (~> 0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    polyglot (0.3.5)
+    rake (10.5.0)
+    ruby-todoist-api (0.3)
+    thor (0.20.0)
+    todoist_querynaut (0.1.1)
+      ruby-todoist-api (~> 0.3)
+      treetop (~> 1.5)
+    treetop (1.6.10)
+      polyglot (~> 0.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.7)
+  huginn_agent (~> 0.4.3)!
+  huginn_todoist_agent!
+  rake (~> 10.0)
+
+BUNDLED WITH
+   1.16.1

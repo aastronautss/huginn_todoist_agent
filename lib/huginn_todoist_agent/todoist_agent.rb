@@ -71,9 +71,9 @@ module Agents
           end
 
           log "creating item: #{item}"
-          todoist = Todoist::Client.new(interpolated["api_token"].present? ? interpolated["api_token"] : credential("todoist_api_token"))
-          todoist.items.create(item)
-          todoist.process!
+          todoist = Todoist::Client.create_client_by_token(interpolated["api_token"].present? ? interpolated["api_token"] : credential("todoist_api_token"))
+          todoist.sync_items.add(item)
+          todoist.sync
         end
       end
     end

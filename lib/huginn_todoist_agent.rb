@@ -4,10 +4,10 @@ require 'huginn_agent'
 # still starts up successfully, yet shows "Missing Gems" error in the frontend.
 begin
   require 'todoist'
-  require 'todoist_querynaut'
+  # require 'todoist_querynaut'
 rescue LoadError
 end
 
 #HuginnAgent.load 'huginn_todoist_agent/concerns/my_agent_concern'
 HuginnAgent.register 'huginn_todoist_agent/todoist_agent'
-HuginnAgent.register 'huginn_todoist_agent/todoist_query_agent'
+# HuginnAgent.register 'huginn_todoist_agent/todoist_query_agent'

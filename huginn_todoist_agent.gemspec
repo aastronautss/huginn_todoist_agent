@@ -26,5 +26,5 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "huginn_agent", '~> 0'
   spec.add_runtime_dependency 'ruby-todoist-api', '~> 0.3'
-  spec.add_runtime_dependency "todoist_querynaut", '~> 0.1'
+  # spec.add_runtime_dependency "todoist_querynaut", '~> 0.1'
 end

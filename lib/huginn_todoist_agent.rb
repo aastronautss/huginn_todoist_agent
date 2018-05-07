@@ -1,13 +1,7 @@
+# frozen_string_literal: true
+
 require 'huginn_agent'
+require 'todoist'
 
-# Load todoist (from ruby-todoist-api Gem), ignoring LoadErrors.  This way Huginn
-# still starts up successfully, yet shows "Missing Gems" error in the frontend.
-begin
-  require 'todoist'
-  # require 'todoist_querynaut'
-rescue LoadError
-end
-
-#HuginnAgent.load 'huginn_todoist_agent/concerns/my_agent_concern'
+# HuginnAgent.load 'huginn_todoist_agent/concerns/my_agent_concern'
 HuginnAgent.register 'huginn_todoist_agent/todoist_agent'
-# HuginnAgent.register 'huginn_todoist_agent/todoist_query_agent'

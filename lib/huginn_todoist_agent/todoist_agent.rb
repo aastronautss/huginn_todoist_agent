@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 module Agents
+  ##
+  # = Huginn Todoist Agent
+  #
   class TodoistAgent < Agent
     include FormConfigurable
 
-    cannot_be_scheduled!
     cannot_create_events!
 
     gem_dependency_check { defined?(Todoist::Client) }
@@ -33,6 +35,8 @@ module Agents
         4 highest.  Defaults to natural priority (aka 1).
       MD
     end
+
+    default_schedule 'every_1d'
 
     def default_options
       {

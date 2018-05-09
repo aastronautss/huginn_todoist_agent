@@ -6,10 +6,9 @@ module Agents
   #
   class TodoistAgent < Agent
     include FormConfigurable
+    include TodoistAgentable
 
     cannot_create_events!
-
-    gem_dependency_check { defined?(Todoist::Client) }
 
     description do
       <<-MD
@@ -68,6 +67,8 @@ module Agents
       incoming_events.each { |event| handle_event(event) }
     end
 
+    private
+
     def handle_event(event)
       interpolate_with(event) do
         item = { 'content' => interpolated['content'] }
@@ -80,30 +81,6 @@ module Agents
 
         add_item(item)
       end
-    end
-
-    def todoist
-      @todoist ||= Todoist::Client.create_client_by_token(
-        interpolated['api_token'].present? ? interpolated['api_token'] : credential('todoist_api_token')
-      )
-    end
-
-    def add_item(item_params)
-      todoist.sync_items.add(item_params)
-      todoist.sync
-    end
-
-    def fetch_labels
-      todoist.sync_labels.collection.values
-    end
-
-    def label_ids_for(label_list)
-      label_names = label_list.split(/,\s*/)
-      label_names.map { |label_name| label_id_for(label_name) }.compact
-    end
-
-    def label_id_for(label_name)
-      fetch_labels.find { |label| label.name == label_name }.try(:id)
     end
   end
 end

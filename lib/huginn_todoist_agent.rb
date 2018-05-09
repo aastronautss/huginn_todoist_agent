@@ -3,5 +3,6 @@
 require 'huginn_agent'
 require 'todoist'
 
-# HuginnAgent.load 'huginn_todoist_agent/concerns/my_agent_concern'
+HuginnAgent.load 'huginn_todoist_agent/concerns/todoist_agentable'
 HuginnAgent.register 'huginn_todoist_agent/todoist_agent'
+HuginnAgent.register 'huginn_todoist_agent/todoist_task_finder_agent'

@@ -17,11 +17,23 @@ module TodoistAgentable
   end
 
   def items
-    @items ||= todoist.sync_items.collection.values
+    @items ||= items_lookup.values
+  end
+
+  def items_lookup
+    todoist.sync_items.collection
   end
 
   def add_item(item_params)
     todoist.sync_items.add(item_params)
+
+    todoist.sync
+  end
+
+  def complete_item(item_id)
+    item = items_lookup[item_id]
+    todoist.sync_items.close(item)
+
     todoist.sync
   end
 

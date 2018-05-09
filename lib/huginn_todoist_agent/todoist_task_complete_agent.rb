@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module Agents
+  ##
+  # = Huginn Todoist Task Complete Agent
+  #
   class TodoistTaskCompleteAgent < Agent
     include FormConfigurable
     include TodoistAgentable
@@ -35,7 +38,7 @@ module Agents
     end
 
     def check
-
+      complete_item(interpolated['task_id'])
     end
 
     def receive(incoming_events)

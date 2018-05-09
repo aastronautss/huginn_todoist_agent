@@ -31,7 +31,7 @@ module TodoistAgentable
   end
 
   def complete_item(item_id)
-    item = items_lookup[item_id]
+    item = items_lookup[item_id.to_i]
     todoist.sync_items.close(item)
 
     todoist.sync

@@ -8,6 +8,8 @@ module Agents
     include FormConfigurable
     include TodoistAgentable
 
+    can_dry_run!
+
     description <<~MD
       Finds tasks based on a given set of criteria. Creates an event for each task found, optionally merged with the incoming event's payload. You may match against one or more of:
 
